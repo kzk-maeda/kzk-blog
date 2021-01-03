@@ -50,6 +50,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-typegen`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
