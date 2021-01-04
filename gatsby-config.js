@@ -9,6 +9,8 @@ module.exports = {
     siteUrl: `https://localhost:8000/`,
     social: {
       twitter: `kzk_maeda`,
+      github: `kzk-maeda`,
+      linkedin: `kzk-maeda`,
     },
   },
   plugins: [
