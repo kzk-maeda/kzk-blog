@@ -58,7 +58,7 @@ const Sidebar = () => {
               </p>
             )}
           </div>
-          <Item href="/">
+          <Item href="/about">
               About Me
           </Item>
           <Item href={`https://twitter.com/${social?.twitter || ``}`}>
