@@ -28,6 +28,8 @@ const Layout: React.FC<{title: string} & {location: WindowLocation<unknown>}> = 
       <div className="contents-wrapper" id="page-wrap">
         <header className="global-header">{header}</header>
           <main className="main-content">{children}</main>
+          <br />
+          <hr />
           <footer className="global-footer">
             © {new Date().getFullYear()}, Built with
             {` `}
