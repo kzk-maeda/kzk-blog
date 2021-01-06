@@ -37,7 +37,7 @@ const SEO: React.FC<Props> = ({ description, lang, meta, title }) => {
 
   const metaDescription = description || site!.siteMetadata!.description
   const defaultTitle = site!.siteMetadata?.title
-  const imageUrl = site!.siteUrl + 'profile.jpg'
+  const imageUrl = site?.siteMetadata?.siteUrl + 'profile.jpg'
 
   return (
     <Helmet
