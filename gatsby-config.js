@@ -6,7 +6,7 @@ module.exports = {
       summary: `Engineer Manager@Progate.Inc. AWS/CSM/DevRel/Python. `,
     },
     description: `kzk self opinions.`,
-    siteUrl: `https://localhost:8000/`,
+    siteUrl: `https://blog.kzk-maeda.work/`,
     social: {
       twitter: `kzk_maeda`,
       github: `kzk-maeda`,
