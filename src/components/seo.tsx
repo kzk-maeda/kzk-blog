@@ -25,6 +25,7 @@ const SEO: React.FC<Props> = ({ description, lang, meta, title }) => {
           siteMetadata {
             title
             description
+            siteUrl
             social {
               twitter
             }
@@ -36,6 +37,7 @@ const SEO: React.FC<Props> = ({ description, lang, meta, title }) => {
 
   const metaDescription = description || site!.siteMetadata!.description
   const defaultTitle = site!.siteMetadata?.title
+  const imageUrl = site!.siteUrl
 
   return (
     <Helmet
@@ -52,6 +54,10 @@ const SEO: React.FC<Props> = ({ description, lang, meta, title }) => {
         {
           property: `og:title`,
           content: title,
+        },
+        {
+          property: `og:image`,
+          content: imageUrl
         },
         {
           property: `og:description`,
