@@ -4,11 +4,14 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import SNSShare from "../components/sns-share"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
+  const pageTitle = post.frontmatter.title
+  const pageUrl = data.site.siteMetadata?.siteUrl + data.markdownRemark?.fields.slug
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -29,6 +32,7 @@ const BlogPostTemplate = ({ data, location }) => {
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
+        <SNSShare title={pageTitle} articleUrl={pageUrl} />
         <hr />
         <footer>
           <Bio />
@@ -75,6 +79,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     markdownRemark(id: { eq: $id }) {
@@ -85,6 +90,9 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+      }
+      fields {
+        slug
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
