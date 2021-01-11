@@ -58,17 +58,20 @@ const Sidebar = () => {
               </p>
             )}
           </div>
+          <Item href="/">
+            Blog Top
+          </Item>
           <Item href="/about">
-              About Me
+            About Me
           </Item>
           <Item href={`https://twitter.com/${social?.twitter || ``}`}>
-              Twitter
+            Twitter
           </Item>
           <Item href={`https://github.com/${social?.github || ``}`}>
-              Github
+            Github
           </Item>
           <Item href={`https://www.linkedin.com/in/${social?.linkedin || ``}`}>
-              Linkedin
+            Linkedin
           </Item>
       </Menu>
   )
