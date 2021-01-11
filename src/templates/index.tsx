@@ -4,8 +4,11 @@ import { Link, graphql, PageProps } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Pagination from "../components/pagination"
 
-const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, location }) => {
+const { pageate } = require('gatsby-awesome-pagination')
+
+const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, pageContext, location }) => {
   const siteTitle = data.site?.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
@@ -57,6 +60,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, loca
           )
         })}
       </ol>
+      <Pagination pageContext={pageContext} />
     </Layout>
   )
 }
@@ -64,13 +68,17 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, loca
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query BlogIndex {
+  query BlogIndex($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      skip: $skip
+      limit: $limit
+      ) {
       nodes {
         excerpt
         fields {

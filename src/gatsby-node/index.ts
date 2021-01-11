@@ -1,6 +1,7 @@
 import { GatsbyNode, Actions } from 'gatsby';
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const { paginate } = require('gatsby-awesome-pagination')
 
 export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -40,6 +41,15 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
+
+  const pathPrefix = ({ pageNumber }: {pageNumber: number}) => pageNumber === 0 ? '/' : '/page'
+  paginate({
+    createPage,
+    items: posts,
+    itemsPerPage: 5,
+    pathPrefix: pathPrefix,
+    component: path.resolve('src/templates/index.tsx'),
+  })
 
   if (posts.length > 0) {
     posts.forEach((post, index) => {

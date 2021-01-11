@@ -2,6 +2,7 @@ import React from "react"
 import { Link, PageProps } from "gatsby"
 import { WindowLocation } from "@reach/router"
 import Sidebar from "./sidebar"
+import Footer from "./footer"
 
 const Layout: React.FC<{title: string} & {location: WindowLocation<unknown>}> = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -30,11 +31,7 @@ const Layout: React.FC<{title: string} & {location: WindowLocation<unknown>}> = 
           <main className="main-content">{children}</main>
           <br />
           <hr />
-          <footer className="global-footer">
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.com">Gatsby</a>
-          </footer>
+          <Footer />
       </div>
     </div>
   )
