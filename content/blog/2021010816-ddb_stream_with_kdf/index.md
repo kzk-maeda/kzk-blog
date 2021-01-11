@@ -2,7 +2,7 @@
 title: "DynamoDB StreamsとKinesis Data Firehoseを使ったサーバーレスリアルタイムETL"
 date: "2021-01-08T00:00:00.000Z"
 description: "DynamoDB StreamsとKinesis Data Firehoseを使ったサーバーレスリアルタイムETL"
-tags: ["AWS" "DataPlatform"]
+tags: ["AWS", "DataPlatform"]
 ---
 # 何を書いた記事か
 過去にDynamoDB Streams + Kinesis Data Firehose + Lambdaを用いたリアルタイムETLを検証した際のメモをこちらに転載します。

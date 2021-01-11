@@ -2,7 +2,7 @@
 title: "S3上ObjectのKeyを普通のdate形式からHive形式に変更する"
 date: "2020-02-25T00:00:00.000Z"
 description: "S3にとりあえず形式で出力してしまったログファイルのキー構成をHive形式に変換する方法"
-tags: ["AWS" "DataPlatform"]
+tags: ["AWS", "DataPlatform"]
 ---
 
 # 何を書いた記事か
