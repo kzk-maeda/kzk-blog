@@ -4,6 +4,7 @@ import { Link, graphql, PageProps } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Pagination from "../components/pagination"
 
 const { pageate } = require('gatsby-awesome-pagination')
 
@@ -59,8 +60,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, page
           )
         })}
       </ol>
-      <Link to={pageContext.previousPagePath}>Previous</Link>
-      <Link to={pageContext.nextPagePath}>Next</Link>
+      <Pagination pageContext={pageContext} />
     </Layout>
   )
 }
