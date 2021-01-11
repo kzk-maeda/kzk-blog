@@ -1891,6 +1891,8 @@ type Query_allDirectoryArgs = {
 type Query_siteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
+  port: Maybe<IntQueryOperatorInput>;
+  host: Maybe<StringQueryOperatorInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
@@ -2029,6 +2031,8 @@ type Query_allSitePluginArgs = {
 type Site = Node & {
   readonly buildTime: Maybe<Scalars['Date']>;
   readonly siteMetadata: Maybe<SiteSiteMetadata>;
+  readonly port: Maybe<Scalars['Int']>;
+  readonly host: Maybe<Scalars['String']>;
   readonly polyfill: Maybe<Scalars['Boolean']>;
   readonly pathPrefix: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
@@ -2237,6 +2241,8 @@ enum SiteFieldsEnum {
   siteMetadata___social___twitter = 'siteMetadata.social.twitter',
   siteMetadata___social___github = 'siteMetadata.social.github',
   siteMetadata___social___linkedin = 'siteMetadata.social.linkedin',
+  port = 'port',
+  host = 'host',
   polyfill = 'polyfill',
   pathPrefix = 'pathPrefix',
   id = 'id',
@@ -2330,6 +2336,8 @@ enum SiteFieldsEnum {
 type SiteFilterInput = {
   readonly buildTime: Maybe<DateQueryOperatorInput>;
   readonly siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
+  readonly port: Maybe<IntQueryOperatorInput>;
+  readonly host: Maybe<StringQueryOperatorInput>;
   readonly polyfill: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix: Maybe<StringQueryOperatorInput>;
   readonly id: Maybe<StringQueryOperatorInput>;
@@ -2386,12 +2394,26 @@ type SitePageConnection_groupArgs = {
 };
 
 type SitePageContext = {
+  readonly pageNumber: Maybe<Scalars['Int']>;
+  readonly humanPageNumber: Maybe<Scalars['Int']>;
+  readonly skip: Maybe<Scalars['Int']>;
+  readonly limit: Maybe<Scalars['Int']>;
+  readonly numberOfPages: Maybe<Scalars['Int']>;
+  readonly previousPagePath: Maybe<Scalars['String']>;
+  readonly nextPagePath: Maybe<Scalars['String']>;
   readonly id: Maybe<Scalars['String']>;
   readonly previousPostId: Maybe<Scalars['String']>;
   readonly nextPostId: Maybe<Scalars['String']>;
 };
 
 type SitePageContextFilterInput = {
+  readonly pageNumber: Maybe<IntQueryOperatorInput>;
+  readonly humanPageNumber: Maybe<IntQueryOperatorInput>;
+  readonly skip: Maybe<IntQueryOperatorInput>;
+  readonly limit: Maybe<IntQueryOperatorInput>;
+  readonly numberOfPages: Maybe<IntQueryOperatorInput>;
+  readonly previousPagePath: Maybe<StringQueryOperatorInput>;
+  readonly nextPagePath: Maybe<StringQueryOperatorInput>;
   readonly id: Maybe<StringQueryOperatorInput>;
   readonly previousPostId: Maybe<StringQueryOperatorInput>;
   readonly nextPostId: Maybe<StringQueryOperatorInput>;
@@ -2496,6 +2518,13 @@ enum SitePageFieldsEnum {
   internal___owner = 'internal.owner',
   internal___type = 'internal.type',
   isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
+  context___pageNumber = 'context.pageNumber',
+  context___humanPageNumber = 'context.humanPageNumber',
+  context___skip = 'context.skip',
+  context___limit = 'context.limit',
+  context___numberOfPages = 'context.numberOfPages',
+  context___previousPagePath = 'context.previousPagePath',
+  context___nextPagePath = 'context.nextPagePath',
   context___id = 'context.id',
   context___previousPostId = 'context.previousPostId',
   context___nextPostId = 'context.nextPostId',
@@ -3155,18 +3184,16 @@ type WebPOptions = {
   readonly quality: Maybe<Scalars['Int']>;
 };
 
-type SeoQueryVariables = Exact<{ [key: string]: never; }>;
+type BlogIndexQueryVariables = Exact<{
+  skip: Scalars['Int'];
+  limit: Scalars['Int'];
+}>;
 
 
-type SeoQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
-      Pick<SiteSiteMetadata, 'title' | 'description' | 'siteUrl'>
-      & { readonly social: Maybe<Pick<Social, 'twitter'>> }
-    )> }> };
-
-type Page404QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type Page404Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+type BlogIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<(
+      Pick<MarkdownRemark, 'excerpt'>
+      & { readonly fields: Maybe<Pick<Fields, 'slug'>>, readonly frontmatter: Maybe<Pick<Frontmatter, 'date' | 'title' | 'description'>> }
+    )> } };
 
 type BlogPostBySlugQueryVariables = Exact<{
   id: Scalars['String'];
@@ -3180,33 +3207,43 @@ type BlogPostBySlugQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe
     & { readonly frontmatter: Maybe<Pick<Frontmatter, 'title' | 'date' | 'description'>>, readonly fields: Maybe<Pick<Fields, 'slug'>> }
   )>, readonly previous: Maybe<{ readonly fields: Maybe<Pick<Fields, 'slug'>>, readonly frontmatter: Maybe<Pick<Frontmatter, 'title'>> }>, readonly next: Maybe<{ readonly fields: Maybe<Pick<Fields, 'slug'>>, readonly frontmatter: Maybe<Pick<Frontmatter, 'title'>> }> };
 
-type BlogIndexQueryVariables = Exact<{ [key: string]: never; }>;
+type Page404QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type BlogIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<(
-      Pick<MarkdownRemark, 'excerpt'>
-      & { readonly fields: Maybe<Pick<Fields, 'slug'>>, readonly frontmatter: Maybe<Pick<Frontmatter, 'date' | 'title' | 'description'>> }
-    )> } };
+type Page404Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
-type SideBioQueryVariables = Exact<{ [key: string]: never; }>;
+type AboutQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type SideBioQuery = { readonly avatar: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }>, readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly author: Maybe<Pick<Author, 'name' | 'summary'>>, readonly social: Maybe<Pick<Social, 'twitter' | 'github' | 'linkedin'>> }> }> };
-
-type BioQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type BioQueryQuery = { readonly avatar: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }>, readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly author: Maybe<Pick<Author, 'name' | 'summary'>>, readonly social: Maybe<Pick<Social, 'twitter'>> }> }> };
+type AboutQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly avatar: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }> };
 
 type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type Unnamed_1_Query = { readonly site: Maybe<Pick<Site, 'buildTime'>> };
 
-type AboutQueryVariables = Exact<{ [key: string]: never; }>;
+type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type AboutQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly avatar: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }> };
+type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
+
+type SeoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SeoQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
+      Pick<SiteSiteMetadata, 'title' | 'description' | 'siteUrl'>
+      & { readonly social: Maybe<Pick<Social, 'twitter'>> }
+    )> }> };
+
+type BioQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BioQueryQuery = { readonly avatar: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }>, readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly author: Maybe<Pick<Author, 'name' | 'summary'>>, readonly social: Maybe<Pick<Social, 'twitter'>> }> }> };
+
+type SideBioQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SideBioQuery = { readonly avatar: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }>, readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly author: Maybe<Pick<Author, 'name' | 'summary'>>, readonly social: Maybe<Pick<Social, 'twitter' | 'github' | 'linkedin'>> }> }> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
