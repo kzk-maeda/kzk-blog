@@ -13,7 +13,7 @@ type PageContext = {
 
 export const PreviousLink = styled.div`
     display: flex;
-    justify-content: flex-start
+    justify-content: flex-start;
     margin-left: 10px;
 `
 
