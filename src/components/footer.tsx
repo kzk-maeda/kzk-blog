@@ -11,10 +11,10 @@ const Footer = () => {
     return (
         <>
             <FooterItem>
-                © {new Date().getFullYear()}, Built with
+                © {new Date().getFullYear()}, Built with&nbsp;
                 {` `}
                 <a href="https://www.gatsbyjs.com">Gatsby</a>
-                .  Source Code is 
+                . &nbsp; Source Code is&nbsp;
                 {` `}
                 <a href="https://github.com/kzk-maeda/kzk-blog">Here</a>
             </FooterItem>
