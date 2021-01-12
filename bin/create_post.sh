@@ -1,14 +1,18 @@
 #!/bin/bash
 
-datehour=`date '+%Y%m%d%H'`
+# "2021-01-12T00:00:00.000Z"
+datehour=`date '+%Y-%m-%dT%H:%M:00.000Z'`
+year=`date '+%Y'`
+month=`date '+%m'`
+day=`date '+%d'`
 title=$1
 
 if [ -z ${title} ]; then
     echo "input title"
     exit
 else
-    echo ${datehour}-${title}
-    blogDir="${datehour}-${title}"
+    echo "${year}/${month}/${day}/${title}"
+    blogDir="${year}/${month}/${day}/${title}"
 fi
 
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
@@ -20,7 +24,7 @@ mkdir ${PARENT_DIR}content/blog/${blogDir}
 cat <<EOS >> ${PARENT_DIR}content/blog/${blogDir}/index.md 
 ---
 title: 
-date: 
+date: "${datehour}"
 description: 
 tags: 
 ---
@@ -29,4 +33,4 @@ EOS
 code ${PARENT_DIR}
 
 cd ${PARENT_DIR}
-yarn develop
+# yarn develop

@@ -15,6 +15,7 @@
     "@types/react-share": "^3.0.3",
     "@types/react-sidebar": "^3.0.0",
     "@types/styled-components": "^5.1.7",
+    "dayjs": "^1.10.3",
     "dotenv": "^8.2.0",
     "gatsby": "^2.26.1",
     "gatsby-awesome-pagination": "^0.3.6",
