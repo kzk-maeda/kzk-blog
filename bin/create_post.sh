@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # "2021-01-12T00:00:00.000Z"
-datehour=`date '+%Y-%m-%dT%H:%M:00.000Z'`
+datehour=`date '+%Y-%m-%dT%H:%M:00.000Z'`
 year=`date '+%Y'`
 month=`date '+%m'`
 day=`date '+%d'`
