@@ -1,6 +1,6 @@
 ---
 title: "[読書記録]HIGH OUTPUT MANAGEMENT"
-date: "2021-01-14T01:58:00.000Z"
+date: "2021-01-14T01:58:00.000Z"
 description: "「HIGH OUTPUT MANAGEMENT」を読んで感銘を受けた箇所のメモ、自分の行動への反映"
 tags: "読書"
 ---
