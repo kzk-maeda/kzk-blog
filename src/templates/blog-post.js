@@ -1,10 +1,21 @@
 import React from "react"
+import styled from "styled-components"
 import { Link, graphql } from "gatsby"
+import kebabCase from 'lodash/kebabCase'
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import SNSShare from "../components/sns-share"
+
+import { makeStyles } from '@material-ui/core/styles';
+import Button from "@material-ui/core/Button"
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    margin: theme.spacing(1),
+  },
+}));
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
@@ -12,6 +23,8 @@ const BlogPostTemplate = ({ data, location }) => {
   const { previous, next } = data
   const pageTitle = post.frontmatter.title
   const pageUrl = data.site.siteMetadata?.siteUrl + data.markdownRemark?.fields.slug
+  const tags = post.frontmatter.tags
+  const classes = useStyles();
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -27,6 +40,13 @@ const BlogPostTemplate = ({ data, location }) => {
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
+          {tags.map(tag => {
+            return (
+              <Button className={classes.root} variant="outlined" color="primary" href={`/tags/${kebabCase(tag)}/`}>
+                {tag}
+              </Button>
+            )
+          })}
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -90,6 +110,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
       }
       fields {
         slug
