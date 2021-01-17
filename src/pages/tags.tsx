@@ -4,23 +4,43 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import kebabCase from 'lodash/kebabCase'
 
+import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemText from '@material-ui/core/ListItemText';
+import FolderIcon from '@material-ui/icons/Folder';
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: '100%',
+      maxWidth: 360,
+      backgroundColor: theme.palette.background.paper,
+    },
+  }),
+);
 
 const Tags: React.FC<PageProps<GatsbyTypes.TagsIndexQuery>> = ({data, location}) => {
   const siteTitle = data.site?.siteMetadata?.title || `Title`
   const group = data.allMarkdownRemark.group
+  const classes = useStyles();
   return (
       <Layout title={siteTitle} location={location}>
       <SEO title="Tags"/>
       <h1>Tags</h1>
-      <ul>
+      <List className={classes.root}>
         {group.map(tag => (
-          <li key={tag.fieldValue}>
+          <ListItem key={tag.fieldValue}>
+            <ListItemAvatar>
+              <FolderIcon />
+            </ListItemAvatar>
             <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-              {tag.fieldValue} ({tag.totalCount})
+              <ListItemText primary={`${tag.fieldValue} (${tag.totalCount})`}/>
             </Link>
-          </li>
+          </ListItem>
         ))}
-      </ul>
+      </List>
       </Layout>
   )
 }
