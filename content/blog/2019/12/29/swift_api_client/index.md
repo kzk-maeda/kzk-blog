@@ -2,7 +2,7 @@
 title: "SwiftでURLSessionを用いて汎用的なAPI Clientを作成"
 date: "2019-12-29T00:00:00.000Z"
 description: "SwiftでURLSessionを用いて汎用的なAPI Clientを作成"
-tags: "Swift"
+tags: ["Swift"]
 ---
 
 ## はじめに
