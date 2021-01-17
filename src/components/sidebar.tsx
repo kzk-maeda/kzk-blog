@@ -61,6 +61,9 @@ const Sidebar = () => {
           <Item href="/">
             Blog Top
           </Item>
+          <Item href="/tags">
+            Tags
+          </Item>
           <Item href="/about">
             About Me
           </Item>
