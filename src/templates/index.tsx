@@ -1,16 +1,32 @@
 import React from "react"
 import { Link, graphql, PageProps } from "gatsby"
+import kebabCase from 'lodash/kebabCase'
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Pagination from "../components/pagination"
 
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import Button from "@material-ui/core/Button"
+
 const { pageate } = require('gatsby-awesome-pagination')
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    tag: {
+      margin: '0 10px',
+    },
+    date: {
+      padding: '0 10px'
+    }
+  }),
+);
 
 const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, pageContext, location }) => {
   const siteTitle = data.site?.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+  const classes = useStyles();
 
   if (posts.length === 0) {
     return (
@@ -45,7 +61,14 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, page
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
-                  <small>{post.frontmatter!.date}</small>
+                  <small className={classes.date}>{post.frontmatter!.date}</small>
+                  {post.frontmatter?.tags?.map(tag => {
+                    return (
+                      <Button
+                      className={classes.tag} variant="outlined" color="primary" size="small" href={`/tags/${kebabCase(tag)}/`}  
+                      >{tag}</Button>
+                    )
+                  })}
                 </header>
                 <section>
                   <p
@@ -88,6 +111,7 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
+          tags
         }
       }
     }
