@@ -2,7 +2,7 @@
 title: "戦略的EOL対応フレームワーク"
 date: "2020-05-30T00:00:00.000Z"
 description: "EOL/EOSL対応を効率的に行うための戦略について"
-tags: "Operation"
+tags: ["Operation"]
 ---
 
 # 何を書いた記事か

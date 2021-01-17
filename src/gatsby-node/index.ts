@@ -1,4 +1,5 @@
 import { GatsbyNode, Actions } from 'gatsby';
+const _ = require('lodash')
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const { paginate } = require('gatsby-awesome-pagination')
@@ -8,6 +9,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const tagTemplate = path.resolve('./src/templates/tags.tsx')
 
   // Get all markdown blog posts sorted by date
   const result = await graphql<{ allMarkdownRemark: Pick<GatsbyTypes.Query["allMarkdownRemark"], 'nodes'> }>(
@@ -26,8 +28,8 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
         }
       }
     `
-  )
-
+    )
+      
   if (result.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
@@ -37,6 +39,28 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   }
 
   const posts = result!.data!.allMarkdownRemark.nodes
+  
+  // Get all tags
+  const tagsResult = await graphql<{ allMarkdownRemark: Pick<GatsbyTypes.Query["allMarkdownRemark"], 'group'> }>(
+    `
+      {
+        allMarkdownRemark(limit: 2000) {
+          group(field: frontmatter___tags) {
+            fieldValue
+          }
+        }
+      }
+    `
+  )
+
+  if (tagsResult.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your blog posts`,
+      tagsResult.errors
+    )
+    return
+  }
+  
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -67,6 +91,22 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
       })
     })
   }
+
+  const tags = tagsResult!.data!.allMarkdownRemark.group
+
+  if (tags.length > 0) {
+    tags.forEach(tag => {
+      createPage({
+        path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
+        component: tagTemplate,
+        context: {
+          tag: tag.fieldValue,
+        }
+      })
+    })
+  }
+
+
 }
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions, getNode }) => {
