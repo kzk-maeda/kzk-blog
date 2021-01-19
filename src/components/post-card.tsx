@@ -33,26 +33,24 @@ type Fields = {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     tag: {
-      margin: '0 10px',
+      margin: '10px 10px',
     },
     date: {
-      padding: '0 10px'
+      padding: '0 10px',
+      margin: '0 0 10px'
     },
     root: {
       minWidth: 275,
-      margin: '10px',
-    },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
+      margin: '5px',
     },
     title: {
-      fontSize: 14,
+      fontSize: 24,
+      margin: '10px 0'
     },
-    pos: {
-      marginBottom: 12,
-    },
+    desc: {
+      fontSize: 16,
+      margin: '10px 0'
+    }
   }),
 );
 
@@ -63,18 +61,18 @@ const PostCard: React.FC<Props> = ({ post }) => {
     return (
         <Card className={classes.root} variant="outlined">
             <CardContent>
-                <article
+                {/* <article
                 className="post-list-item"
                 itemScope
                 itemType="http://schema.org/Article"
-                >
+                > */}
                 <header>
-                <h2>
+                <h3 className={classes.title}>
                     <Link to={post.fields!.slug!} itemProp="url">
                     <span itemProp="headline">{title}</span>
                     </Link>
-                </h2>
-                <small className={classes.date}>{post.frontmatter!.date}</small>
+                </h3>
+                <small className={classes.date}>{post.frontmatter!.date}</small><br />
                 {post.frontmatter?.tags?.map(tag => {
                     return (
                     <Button
@@ -84,14 +82,14 @@ const PostCard: React.FC<Props> = ({ post }) => {
                 })}
                 </header>
                 <section>
-                <p
+                <p  className={classes.desc}
                     dangerouslySetInnerHTML={{
                     __html: post.frontmatter!.description || post.excerpt!,
                     }}
                     itemProp="description"
                 />
                 </section>
-            </article>
+            {/* </article> */}
             </CardContent>
         </Card>
     )
