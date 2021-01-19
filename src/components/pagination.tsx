@@ -1,6 +1,11 @@
 import { Link, PageProps } from 'gatsby'
 import React from 'react'
-import styled from 'styled-components'
+
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 type Props = {
     pageContext: PageContext,
@@ -11,33 +16,62 @@ type PageContext = {
     nextPagePath?: string,
 }
 
-export const PreviousLink = styled.div`
-    display: flex;
-    justify-content: flex-start;
-    margin-left: 10px;
-`
-
-export const NextLink = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10px
-`
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        prevButton: {
+            display: 'block',
+            margin: '0 auto 0 10px',
+        },
+        nextButton: {
+            display: 'block',
+            margin: '0 10px 0 auto',
+        }
+    }),
+)
 
 
 const Pagination: React.FC<Props> = ({ pageContext }) => {
     console.log(pageContext)
+    const classes = useStyles();
     const { previousPagePath, nextPagePath } = pageContext;
 
-    return (
-		<>
-            <PreviousLink>
-			    {previousPagePath ? <Link to={previousPagePath}>Previous</Link> : null }
-            </PreviousLink>
-            <NextLink>
-			    {nextPagePath ? <Link to={nextPagePath}>Next</Link> : null }
-            </NextLink>
-		</>
-	)
+    if (!previousPagePath && nextPagePath) {
+        return (
+            <div>
+                <Link to={nextPagePath}>
+                    <IconButton className={classes.nextButton} color="default">
+                        <ArrowForwardIosIcon />
+                    </IconButton>
+                </Link>
+            </div>
+        )
+    } else if (!nextPagePath && previousPagePath) {
+        return (
+            <>
+                <Link to={previousPagePath}>
+                    <IconButton className={classes.prevButton} color="default">
+                        <ArrowBackIosIcon />
+                    </IconButton>
+                </Link>
+            </>
+        )
+    } else {
+        return (
+            <>
+                <Link to={previousPagePath}>
+                    <IconButton className={classes.prevButton} color="default">
+                        <ArrowBackIosIcon />
+                    </IconButton>
+                </Link>
+                <Link to={nextPagePath}>
+                    <IconButton className={classes.nextButton} color="default">
+                        <ArrowForwardIosIcon />
+                    </IconButton>
+                </Link>
+            </>
+        )
+    }
+
 }
 
 export default Pagination
