@@ -3,13 +3,9 @@ import { Link, graphql, PageProps } from 'gatsby'
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import PostCard from "../components/post-card"
 
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemText from '@material-ui/core/ListItemText';
-import NoteSharpIcon from '@material-ui/icons/NoteSharp';
 
 type Props = {
     tag: string
@@ -34,22 +30,11 @@ const Tags: React.FC<PageProps<GatsbyTypes.TagsQuery, Props>> = ({ data, pageCon
           <List>
               {edges.map( ({node})  => {
                 return (
-                    <ListItem key={node.fields?.slug!}>
-                        <ListItemAvatar>
-                            <NoteSharpIcon />
-                        </ListItemAvatar>
-                        <Link to={node.fields?.slug!}>
-                            <ListItemText primary={node.frontmatter?.title!} />
-                        </Link>
-                    </ListItem> 
+                    <PostCard post={node}></PostCard>
                 )
               }
               )}
           </List>
-            {/*
-              This links to a page that does not yet exist.
-              You'll come back to it!
-            */}
             <Link to="/tags">All tags</Link>
         </Layout>
     )
@@ -73,10 +58,14 @@ export const pageQuery = graphql`
       totalCount
       edges {
         node {
+          excerpt
           fields {
             slug
           }
           frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            description
+            tags
             title
           }
         }
