@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     date: {
       padding: '0 10px'
+    },
+    page: {
+      display: 'flex'
     }
   }),
 );
@@ -51,7 +54,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, page
             <PostCard post={post}></PostCard>
           )
         })}
-        
+
       <Pagination pageContext={pageContext} />
     </Layout>
   )

@@ -76,7 +76,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
                 {post.frontmatter?.tags?.map(tag => {
                     return (
                     <Button
-                    className={classes.tag} variant="outlined" color="primary" size="small" href={`/tags/${kebabCase(tag)}/`}  
+                    className={classes.tag} variant="contained" color="primary" size="small" href={`/tags/${kebabCase(tag)}/`}  
                     >{tag}</Button>
                     )
                 })}
