@@ -13,24 +13,9 @@ import Button from "@material-ui/core/Button"
 
 const { pageate } = require('gatsby-awesome-pagination')
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    tag: {
-      margin: '0 10px',
-    },
-    date: {
-      padding: '0 10px'
-    },
-    page: {
-      display: 'flex'
-    }
-  }),
-);
-
 const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, pageContext, location }) => {
   const siteTitle = data.site?.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-  const classes = useStyles();
 
   if (posts.length === 0) {
     return (
