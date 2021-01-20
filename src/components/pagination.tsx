@@ -58,12 +58,12 @@ const Pagination: React.FC<Props> = ({ pageContext }) => {
     } else {
         return (
             <>
-                <Link to={previousPagePath}>
+                <Link to={previousPagePath || "/"}>
                     <IconButton className={classes.prevButton} color="default">
                         <ArrowBackIosIcon />
                     </IconButton>
                 </Link>
-                <Link to={nextPagePath}>
+                <Link to={nextPagePath || "/"}>
                     <IconButton className={classes.nextButton} color="default">
                         <ArrowForwardIosIcon />
                     </IconButton>

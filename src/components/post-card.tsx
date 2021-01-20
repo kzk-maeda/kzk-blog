@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     tag: {
       margin: '10px 10px',
+      fontSize: '12px'
     },
     date: {
       padding: '0 10px',

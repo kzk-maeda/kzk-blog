@@ -1,8 +1,9 @@
 import React from "react"
 import { Link, PageProps } from "gatsby"
 import { WindowLocation } from "@reach/router"
-import Sidebar from "./sidebar"
+import Sidebar from "./sidebar-old"
 import Footer from "./footer"
+import PersistentDrawerLeft from './sidebar'
 
 const Layout: React.FC<{title: string} & {location: WindowLocation<unknown>}> = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -25,9 +26,10 @@ const Layout: React.FC<{title: string} & {location: WindowLocation<unknown>}> = 
 
   return (
     <div className="global-wrapper" id="outer-container" data-is-root-path={isRootPath}>
-      <Sidebar />
+      {/* <Sidebar /> */}
+      <PersistentDrawerLeft />
       <div className="contents-wrapper" id="page-wrap">
-        <header className="global-header">{header}</header>
+        {/* <header className="global-header">{header}</header> */}
           <main className="main-content">{children}</main>
           <br />
           <hr />
