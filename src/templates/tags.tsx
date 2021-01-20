@@ -6,6 +6,7 @@ import SEO from "../components/seo"
 import PostCard from "../components/post-card"
 
 import List from '@material-ui/core/List';
+import Button from '@material-ui/core/Button';
 
 type Props = {
     tag: string
@@ -26,7 +27,7 @@ const Tags: React.FC<PageProps<GatsbyTypes.TagsQuery, Props>> = ({ data, pageCon
     return (
         <Layout location={location} title={siteTitle}>
           <SEO title="All tags" />
-          <h1>{tagHeader}</h1>
+          <h4>{tagHeader}</h4>
           <List>
               {edges.map( ({node})  => {
                 return (
@@ -35,7 +36,9 @@ const Tags: React.FC<PageProps<GatsbyTypes.TagsQuery, Props>> = ({ data, pageCon
               }
               )}
           </List>
-            <Link to="/tags">All tags</Link>
+          <Button variant="contained" href="/tags">
+            All Tags
+          </Button>
         </Layout>
     )
 }
