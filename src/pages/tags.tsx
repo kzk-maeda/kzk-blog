@@ -13,7 +13,7 @@ import FolderIcon from '@material-ui/icons/Folder';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
+    tagsRoot: {
       width: '100%',
       maxWidth: 360,
       backgroundColor: theme.palette.background.paper,
@@ -29,7 +29,7 @@ const Tags: React.FC<PageProps<GatsbyTypes.TagsIndexQuery>> = ({data, location})
       <Layout title={siteTitle} location={location}>
       <SEO title="Tags"/>
       <h1>Tags</h1>
-      <List className={classes.root}>
+      <List className={classes.tagsRoot}>
         {group.map(tag => (
           <ListItem key={tag.fieldValue}>
             <ListItemAvatar>

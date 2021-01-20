@@ -30,7 +30,7 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
+    sidebarRoot: {
       display: 'flex',
     },
     appBar: {
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
         duration: theme.transitions.duration.leavingScreen,
       }),
     },
-    appBarShift: {
+    sidebarAppBarShift: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
       transition: theme.transitions.create(['margin', 'width'], {
@@ -47,25 +47,25 @@ const useStyles = makeStyles((theme: Theme) =>
         duration: theme.transitions.duration.enteringScreen,
       }),
     },
-    avatar: {
+    sidebarAvatar: {
       marginLeft: theme.spacing(4),
       marginTop: theme.spacing(2),
       fontSize: '16px',
     },
-    menuButton: {
+    sidebarMenuButton: {
       marginRight: theme.spacing(2),
     },
-    hide: {
+    sidebarHide: {
       display: 'none',
     },
-    drawer: {
+    sidebarDrawer: {
       width: drawerWidth,
       flexShrink: 0,
     },
-    drawerPaper: {
+    sidebarDrawerPaper: {
       width: drawerWidth,
     },
-    drawerHeader: {
+    sidebarDrawerHeader: {
       display: 'flex',
       alignItems: 'center',
       padding: theme.spacing(0, 1),
@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme: Theme) =>
       ...theme.mixins.toolbar,
       justifyContent: 'flex-end',
     },
-    content: {
+    sidebarContent: {
       flexGrow: 1,
       padding: theme.spacing(3),
       transition: theme.transitions.create('margin', {
@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
       marginLeft: -drawerWidth,
     },
-    contentShift: {
+    sidebarContentShift: {
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen,
@@ -135,12 +135,12 @@ export default function PersistentDrawerLeft() {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.sidebarRoot}>
       <CssBaseline />
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
+          [classes.sidebarAppBarShift]: open,
         })}
       >
         <Toolbar>
@@ -149,7 +149,7 @@ export default function PersistentDrawerLeft() {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
+            className={clsx(classes.sidebarMenuButton, open && classes.sidebarHide)}
           >
             <MenuIcon />
           </IconButton>
@@ -159,21 +159,21 @@ export default function PersistentDrawerLeft() {
         </Toolbar>
       </AppBar>
       <Drawer
-        className={classes.drawer}
+        className={classes.sidebarDrawer}
         variant="persistent"
         anchor="left"
         open={open}
         classes={{
-          paper: classes.drawerPaper,
+          paper: classes.sidebarDrawerPaper,
         }}
       >
-        <div className={classes.drawerHeader}>
+        <div className={classes.sidebarDrawerHeader}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
         <Divider />
-        <div className={classes.avatar}>
+        <div className={classes.sidebarAvatar}>
             {avatar && (
               <Image
                 fixed={avatar}
