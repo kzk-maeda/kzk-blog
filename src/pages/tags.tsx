@@ -28,8 +28,9 @@ const Tags: React.FC<PageProps<GatsbyTypes.TagsIndexQuery>> = ({data, location})
   return (
       <Layout title={siteTitle} location={location}>
       <SEO title="Tags"/>
-      <h1>Tags</h1>
-      <List className={classes.tagsRoot}>
+      <h3>Tags</h3>
+      {/* <List className={classes.tagsRoot}> */}
+      <List>
         {group.map(tag => (
           <ListItem key={tag.fieldValue}>
             <ListItemAvatar>

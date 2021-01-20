@@ -41,7 +41,7 @@ const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } 
             <SEO title="About" />
             <h1>About Me</h1>
             <Image
-                fixed={avatar || NaN}
+                fixed={avatar!}
                 alt=""
                 className="bio-avatar"
                 imgStyle={{
