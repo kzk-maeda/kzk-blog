@@ -1,15 +1,11 @@
 import React from "react"
-import { Link, graphql, PageProps } from "gatsby"
-import kebabCase from 'lodash/kebabCase'
+import { graphql, PageProps } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Pagination from "../components/pagination"
 import PostCard from "../components/post-card"
 
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import Button from "@material-ui/core/Button"
 
 const { pageate } = require('gatsby-awesome-pagination')
 
