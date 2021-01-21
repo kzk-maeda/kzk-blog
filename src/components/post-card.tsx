@@ -32,23 +32,23 @@ type Fields = {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    tag: {
+    cardTag: {
       margin: '10px 10px',
       fontSize: '12px'
     },
-    date: {
+    cardDate: {
       padding: '0 10px',
       margin: '0 0 10px'
     },
-    root: {
+    cardRoot: {
       minWidth: 275,
       margin: '5px',
     },
-    title: {
+    cardTitle: {
       fontSize: 24,
       margin: '10px 0'
     },
-    desc: {
+    cardDesc: {
       fontSize: 16,
       margin: '10px 0'
     }
@@ -60,7 +60,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
     const title = post.frontmatter?.title || post.fields?.slug
 
     return (
-        <Card className={classes.root} variant="outlined">
+        <Card className={classes.cardRoot} variant="outlined">
             <CardContent>
                 {/* <article
                 className="post-list-item"
@@ -68,22 +68,22 @@ const PostCard: React.FC<Props> = ({ post }) => {
                 itemType="http://schema.org/Article"
                 > */}
                 <header>
-                <h3 className={classes.title}>
+                <h3 className={classes.cardTitle}>
                     <Link to={post.fields!.slug!} itemProp="url">
                     <span itemProp="headline">{title}</span>
                     </Link>
                 </h3>
-                <small className={classes.date}>{post.frontmatter!.date}</small><br />
+                <small className={classes.cardDate}>{post.frontmatter!.date}</small><br />
                 {post.frontmatter?.tags?.map(tag => {
                     return (
                     <Button
-                    className={classes.tag} variant="contained" color="primary" size="small" href={`/tags/${kebabCase(tag)}/`}  
+                    className={classes.cardTag} variant="contained" color="primary" size="small" href={`/tags/${kebabCase(tag)}/`}  
                     >{tag}</Button>
                     )
                 })}
                 </header>
                 <section>
-                <p  className={classes.desc}
+                <p  className={classes.cardDesc}
                     dangerouslySetInnerHTML={{
                     __html: post.frontmatter!.description || post.excerpt!,
                     }}

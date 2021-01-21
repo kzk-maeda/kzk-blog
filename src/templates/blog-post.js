@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button"
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  postRoot: {
     margin: theme.spacing(1),
   },
 }));
@@ -42,7 +42,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <p>{post.frontmatter.date}</p>
           {tags.map(tag => {
             return (
-              <Button className={classes.root} variant="outlined" color="primary" href={`/tags/${kebabCase(tag)}/`}>
+              <Button className={classes.postRoot} variant="outlined" color="primary" href={`/tags/${kebabCase(tag)}/`}>
                 {tag}
               </Button>
             )
