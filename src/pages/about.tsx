@@ -7,23 +7,12 @@ import ListItem, { ListItemProps } from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import { makeStyles, Theme, createStyles } from '@material-ui/core';
 import Image from "gatsby-image";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    aboutRoot: {
-      padding: 0,
-      margin: 0,
-      paddingInlineStart: 1
-    },
-  }),
-);
 
 export const Item: React.FC<{content: string}> = ({content}) => {
-  const classes = useStyles();
   return (
-      <ListItem className={classes.aboutRoot}>
+      <ListItem>
         <ListItemIcon><ArrowRightIcon /></ListItemIcon>
         <ListItemText>{content}</ListItemText>
       </ListItem>
@@ -34,7 +23,6 @@ export const Item: React.FC<{content: string}> = ({content}) => {
 const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } ) => {
     const siteTitle = data.site?.siteMetadata?.title || `Title`
     const avatar = data.avatar?.childImageSharp?.fixed
-    const classes = useStyles();
     
     return (
         <Layout location={location} title={siteTitle}>
@@ -49,28 +37,28 @@ const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } 
                 }}
             />
             <h3>Profile</h3>
-            <List className={classes.aboutRoot}>
+            <List>
                 <Item content="kzk_maeda" />
                 <Item content="Progate, inc. Engineer Manager" />
             </List>
             <h3>Works</h3>
             <h5>Panasonic (2013.4 ~ 2014.11)</h5>
-            <List className={classes.aboutRoot}>
+            <List>
                 <Item content="Patent Officer" />
             </List>
             <h5>Recruit (2014.11 ~ 2020.8)</h5>
-            <List className={classes.aboutRoot}>
+            <List>
                 <Item content="SRE/Infra Engineer" />
                 <Item content="Team Leader" />
                 <Item content="Project Manager" />
             </List>
             <h5>Free-lance (2016.10 ~ )</h5>
-            <List className={classes.aboutRoot}>
+            <List>
                 <Item content="Patent Conslutant" />
                 <Item content="Data Platform Engineer" />
             </List>
             <h5>Progate (2020.9 ~ )</h5>
-            <List className={classes.aboutRoot}>
+            <List>
                 <Item content="Engineer Manager" />
             </List>
         </Layout>

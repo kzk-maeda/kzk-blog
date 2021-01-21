@@ -1,7 +1,6 @@
-import { Link, PageProps } from 'gatsby'
+import { Link } from 'gatsby'
 import React from 'react'
 
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';

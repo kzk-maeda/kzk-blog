@@ -4,27 +4,16 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import kebabCase from 'lodash/kebabCase'
 
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import FolderIcon from '@material-ui/icons/Folder';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    tagsRoot: {
-      width: '100%',
-      maxWidth: 360,
-      backgroundColor: theme.palette.background.paper,
-    },
-  }),
-);
 
 const Tags: React.FC<PageProps<GatsbyTypes.TagsIndexQuery>> = ({data, location}) => {
   const siteTitle = data.site?.siteMetadata?.title || `Title`
   const group = data.allMarkdownRemark.group
-  const classes = useStyles();
   return (
       <Layout title={siteTitle} location={location}>
       <SEO title="Tags"/>

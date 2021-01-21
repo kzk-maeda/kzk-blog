@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, PageProps } from "gatsby"
 import { WindowLocation } from "@reach/router"
-import Sidebar from "./sidebar-old"
 import Footer from "./footer"
 import PersistentDrawerLeft from './sidebar'
 
