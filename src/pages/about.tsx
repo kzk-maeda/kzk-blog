@@ -18,18 +18,18 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    container: {
+    switchContainer: {
       display: 'flex',
       justifyContent: 'space-between',
     },
-    image: {
+    bioImage: {
       left: 0,
       marginRight: '1rem',
       marginBottom: 0,
       minWidth: '50px',
       borderRadius: '100%',
     },
-    switch: {
+    cliSwitch: {
       right: 0,
     }
   })
@@ -61,9 +61,9 @@ const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } 
       <>
         <Layout location={location} title={siteTitle}>
             <SEO title="About" />
-            <div className={classes.container}> 
+            <div className={classes.switchContainer}> 
               <h1>About Me</h1>
-              <FormGroup row className={classes.switch}>
+              <FormGroup row className={classes.cliSwitch}>
                 <FormControlLabel
                   control={<Switch color="primary" checked={state} onChange={handleChange} name="showCli" />}
                   label="CLI Mode"
@@ -73,7 +73,7 @@ const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } 
             <Image
                 fixed={avatar!}
                 alt=""
-                className={classes.image}
+                className={classes.bioImage}
                 imgStyle={{
                   borderRadius: `20%`,
                 }}
