@@ -24,16 +24,6 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       justifyContent: 'space-between',
     },
-    bioImage: {
-      left: 0,
-      marginRight: '1rem',
-      marginBottom: 0,
-      minWidth: '50px',
-      borderRadius: '100%',
-    },
-    cliSwitch: {
-      right: 0,
-    }
   })
 )
 
@@ -48,7 +38,7 @@ export const Item: React.FC<{content: string}> = ({content}) => {
 
 
 const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } ) => {
-    // const classes = useStyles()  
+    const classes = useStyles()  
     const siteTitle = data.site?.siteMetadata?.title || `Title`
     const avatar = data.avatar?.childImageSharp?.fixed
 
@@ -63,7 +53,7 @@ const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } 
       <>
         <Layout location={location} title={siteTitle}>
             <SEO title="About" />
-            <div> 
+            <div className={classes.switchContainer}> 
               <h1>About Me</h1>
               <FormGroup row>
                 <FormControlLabel
