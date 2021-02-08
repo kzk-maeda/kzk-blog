@@ -8,7 +8,6 @@ import ListItem, { ListItemProps } from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Fade from '@material-ui/core/Fade';
@@ -38,7 +37,7 @@ export const Item: React.FC<{content: string}> = ({content}) => {
 
 
 const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } ) => {
-    const classes = useStyles()  
+    // const classes = useStyles()  
     const siteTitle = data.site?.siteMetadata?.title || `Title`
     const avatar = data.avatar?.childImageSharp?.fixed
 
@@ -52,16 +51,14 @@ const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } 
     return (
       <>
         <Layout location={location} title={siteTitle}>
-            <SEO title="About" />
-            <div className={classes.switchContainer}> 
+            <div className="about-title"> 
               <h1>About Me</h1>
-              <FormGroup row>
                 <FormControlLabel
                   control={<Switch color="primary" checked={state} onChange={handleChange} name="showCli" />}
                   label="CLI Mode"
                 />
-              </FormGroup>
             </div>
+            <SEO title="About" />
             <Image
                 fixed={avatar!}
                 alt=""
