@@ -37,7 +37,7 @@ export const Item: React.FC<{content: string}> = ({content}) => {
 
 
 const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } ) => {
-    // const classes = useStyles()  
+    const classes = useStyles()  
     const siteTitle = data.site?.siteMetadata?.title || `Title`
     const avatar = data.avatar?.childImageSharp?.fixed
 
@@ -51,7 +51,7 @@ const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } 
     return (
       <>
         <Layout location={location} title={siteTitle}>
-            <div className="about-title"> 
+            <div className={classes.switchContainer}> 
               <h1>About Me</h1>
                 <FormControlLabel
                   control={<Switch color="primary" checked={state} onChange={handleChange} name="showCli" />}
