@@ -1,7 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { XTerm } from 'xterm-for-react';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme: Theme) => 
+  createStyles({
+    cli: {
+      position: 'fixed',
+      bottom: 0,
+      right: 0,
+      left: 0,
+      overflowY: 'auto',
+    }
+  })
+)
 
 const CLI = () => {
+  const classes = useStyles();
   const [input, setInput] = useState("")
   const xtermRef: React.RefObject<XTerm> = React.createRef()
 
@@ -14,7 +28,8 @@ const CLI = () => {
 
   return (
     <>
-      <XTerm
+      <XTerm className={classes.cli}
+        options={{ theme: {background: "brightBlack"} }}
         ref={xtermRef}
         onData={(data) => {
           const code = data.charCodeAt(0);
