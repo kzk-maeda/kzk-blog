@@ -44,7 +44,7 @@ const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } 
     // switch which show cli or not
     const [state, setState] = React.useState(false);
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(state)
+      // console.log(state)
       setState((prev) => !prev);
     };
     
