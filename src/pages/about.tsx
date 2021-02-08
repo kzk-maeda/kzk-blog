@@ -48,7 +48,7 @@ export const Item: React.FC<{content: string}> = ({content}) => {
 
 
 const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } ) => {
-    const classes = useStyles()  
+    // const classes = useStyles()  
     const siteTitle = data.site?.siteMetadata?.title || `Title`
     const avatar = data.avatar?.childImageSharp?.fixed
 
@@ -63,9 +63,9 @@ const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } 
       <>
         <Layout location={location} title={siteTitle}>
             <SEO title="About" />
-            <div className={classes.switchContainer}> 
+            <div> 
               <h1>About Me</h1>
-              <FormGroup row className={classes.cliSwitch}>
+              <FormGroup row>
                 <FormControlLabel
                   control={<Switch color="primary" checked={state} onChange={handleChange} name="showCli" />}
                   label="CLI Mode"
@@ -75,7 +75,7 @@ const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } 
             <Image
                 fixed={avatar!}
                 alt=""
-                className={classes.bioImage}
+                className="bio-avatar"
                 imgStyle={{
                   borderRadius: `20%`,
                 }}
