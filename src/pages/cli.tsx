@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { XTerm } from 'xterm-for-react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-
-interface IState {
-}
-interface IProps {
-}
 
 const CLI = () => {
   const [input, setInput] = useState("")
@@ -55,7 +48,6 @@ const CLI = () => {
           }
         }}
       />
-      {/* <SyntaxHighlighter language="javascript" style={ dark }></SyntaxHighlighter> */}
     </>
   )
 }
