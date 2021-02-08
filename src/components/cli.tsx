@@ -33,11 +33,11 @@ const CLI = () => {
         ref={xtermRef}
         onData={(data) => {
           const code = data.charCodeAt(0);
-          console.log("data : " + data)
-          console.log("data.length : " + data.length)
-          console.log("charCodeAt : " + data.charCodeAt(0))
-          console.log("input : " + input)
-          console.log("input.length : " + input.length)
+          // console.log("data : " + data)
+          // console.log("data.length : " + data.length)
+          // console.log("charCodeAt : " + data.charCodeAt(0))
+          // console.log("input : " + input)
+          // console.log("input.length : " + input.length)
           if (code === 13 && input.length > 0) {
             // Enter
             const output:string = getOutput(input)
@@ -70,10 +70,12 @@ const CLI = () => {
 export default CLI
 
 const getOutput = (command: string): string => {
-  console.log(command)
+  // console.log(command)
   switch(command) {
     case 'pwd':
       return '/usr/local/'
+    case 'whoami':
+      return 'Kazuki Maeda'
   }
   
   return ""

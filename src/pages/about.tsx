@@ -13,7 +13,27 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Fade from '@material-ui/core/Fade';
 import Image from "gatsby-image";
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    container: {
+      display: 'flex',
+      justifyContent: 'space-between',
+    },
+    image: {
+      left: 0,
+      marginRight: '1rem',
+      marginBottom: 0,
+      minWidth: '50px',
+      borderRadius: '100%',
+    },
+    switch: {
+      right: 0,
+    }
+  })
+)
 
 export const Item: React.FC<{content: string}> = ({content}) => {
   return (
@@ -26,6 +46,7 @@ export const Item: React.FC<{content: string}> = ({content}) => {
 
 
 const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } ) => {
+    const classes = useStyles()  
     const siteTitle = data.site?.siteMetadata?.title || `Title`
     const avatar = data.avatar?.childImageSharp?.fixed
 
@@ -35,24 +56,24 @@ const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } 
       console.log(state)
       setState((prev) => !prev);
     };
-
-    // var cli = state? <CLI /> : NaN;
     
     return (
       <>
         <Layout location={location} title={siteTitle}>
             <SEO title="About" />
-            <h1>About Me</h1>
-            <FormGroup row>
-              <FormControlLabel
-                control={<Switch color="primary" checked={state} onChange={handleChange} name="showCli" />}
-                label="CLI Mode"
-              />
-            </FormGroup>
+            <div className={classes.container}> 
+              <h1>About Me</h1>
+              <FormGroup row className={classes.switch}>
+                <FormControlLabel
+                  control={<Switch color="primary" checked={state} onChange={handleChange} name="showCli" />}
+                  label="CLI Mode"
+                />
+              </FormGroup>
+            </div>
             <Image
                 fixed={avatar!}
                 alt=""
-                className="bio-avatar"
+                className={classes.image}
                 imgStyle={{
                   borderRadius: `20%`,
                 }}
