@@ -21,10 +21,10 @@ const CLI = () => {
   const xtermRef: React.RefObject<typeof XTerm> = React.createRef()
 
   useEffect(() => {
-    xtermRef.current!.terminal.writeln(
+    xtermRef.current?.terminal.writeln(
       "Please enter any string then press enter:"
     );
-    xtermRef.current!.terminal.write("echo > ");
+    xtermRef.current?.terminal.write("echo > ");
   }, []);
 
   return (
@@ -81,5 +81,5 @@ const getOutput = (command: string): string => {
 }
 
 const displayOutput = (ref: React.RefObject<typeof XTerm> ,output: string) => {
-  ref.current!.terminal.write(output)
+  ref.current?.terminal.write(output)
 }
