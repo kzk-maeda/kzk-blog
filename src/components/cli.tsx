@@ -21,19 +21,23 @@ const CLI = () => {
   const [count, setCount] = useState(0)
   const xtermRef: React.RefObject<typeof XTerm> = React.createRef()
 
+  const prompt: string = "\x1b[1;32mkzk_maeda \x1b[1;35m$ \x1b[1;37m"
   useEffect(() => {
-    console.log(xtermRef)
+    // console.log(xtermRef)
   }, []);
   
   useLayoutEffect(() => {
-    console.log("layout effect");
-    console.log(count)
+    // console.log("layout effect");
+    // console.log(count)
     // 初回のbackgroud renderと、toggle on時のrender
     if (count < 2) {
       xtermRef.current?.terminal.writeln(
+        "Welcome to kzk_maeda's CLI Profile!"
+      );
+      xtermRef.current?.terminal.writeln(
         "Please enter any string then press enter:"
       );
-      xtermRef.current?.terminal.write("echo > ");
+      xtermRef.current?.terminal.write(prompt);
       setCount(prevCount => prevCount + 1)
     }
   });
@@ -47,7 +51,7 @@ const CLI = () => {
         ref={xtermRef}
         onData={(data: string) => {
           const code = data.charCodeAt(0);
-          console.log(xtermRef)
+          // console.log(xtermRef)
           // console.log("data : " + data)
           // console.log("data.length : " + data.length)
           // console.log("charCodeAt : " + data.charCodeAt(0))
@@ -57,11 +61,11 @@ const CLI = () => {
             // Enter
             const output:string = getOutput(input)
             displayOutput(xtermRef, "\r\n" + output + "\r\n");
-            displayOutput(xtermRef, "echo > ");
+            displayOutput(xtermRef, prompt);
             setInput("")
           } else if (code === 13 && input.length == 0) {
             // Enter without command
-            displayOutput(xtermRef, "\r\necho > ");
+            displayOutput(xtermRef, "\r\n" + prompt);
           } else if (code === 127 && data != "" && input.length > 0) {
             // Backspace
             displayOutput(xtermRef, '\b \b')
