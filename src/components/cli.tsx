@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { NoSsr } from '@material-ui/core';
 const { XTerm = {} } = typeof window !== `undefined` ? require("xterm-for-react") : {}
-// import { XTerm } from 'xterm-for-react';
 
 const useStyles = makeStyles((theme: Theme) => 
   createStyles({
@@ -19,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const CLI = () => {
   const classes = useStyles();
   const [input, setInput] = useState("")
-  const xtermRef: React.RefObject<XTerm> = React.createRef()
+  const xtermRef: React.RefObject<typeof XTerm> = React.createRef()
 
   useEffect(() => {
     xtermRef.current?.terminal.writeln(
@@ -81,6 +80,6 @@ const getOutput = (command: string): string => {
   return ""
 }
 
-const displayOutput = (ref: React.RefObject<XTerm> ,output: string) => {
+const displayOutput = (ref: React.RefObject<typeof XTerm> ,output: string) => {
   ref.current?.terminal.write(output)
 }
