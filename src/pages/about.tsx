@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
     },
     switchContainer: {
-      display: 'flex',
-      justifyContent: 'space-between',
+      display: 'flex !important',
+      justifyContent: 'space-between !important',
     },
   })
 )
@@ -51,7 +51,7 @@ const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } 
     return (
       <>
         <Layout location={location} title={siteTitle}>
-            <div className={classes.switchContainer}> 
+            <div className="about-title"> 
               <h1>About Me</h1>
                 <FormControlLabel
                   control={<Switch color="primary" checked={state} onChange={handleChange} name="showCli" />}
