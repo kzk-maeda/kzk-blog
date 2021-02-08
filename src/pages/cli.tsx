@@ -10,13 +10,13 @@ interface IProps {
 
 const CLI = () => {
   const [input, setInput] = useState("")
-  const xtermRef = React.createRef()
+  const xtermRef: React.RefObject<XTerm> = React.createRef()
 
   useEffect(() => {
-    xtermRef.current.terminal.writeln(
+    xtermRef.current!.terminal.writeln(
       "Please enter any string then press enter:"
     );
-    xtermRef.current.terminal.write("echo > ");
+    xtermRef.current!.terminal.write("echo > ");
   }, []);
 
   return (
@@ -30,22 +30,27 @@ const CLI = () => {
           console.log("charCodeAt : " + data.charCodeAt(0))
           console.log("input : " + input)
           console.log("input.length : " + input.length)
-          // If the user hits empty and there is something typed echo it.
           if (code === 13 && input.length > 0) {
-            xtermRef.current.terminal.write(
-                "\r\nYou typed: '" + input + "'\r\n"
+            // Enter
+            const output:string = getOutput(input)
+            xtermRef.current!.terminal.write(
+                "\r\n" + output + "\r\n"
             );
-            xtermRef.current.terminal.write("echo > ");
+            xtermRef.current!.terminal.write("echo > ");
             setInput("")
           } else if (code === 13 && input.length == 0) {
-            xtermRef.current.terminal.write("\r\necho > ");
+            // Enter without command
+            xtermRef.current!.terminal.write("\r\necho > ");
           } else if (code === 127 && data != "" && input.length > 0) {
-            xtermRef.current.terminal.write('\b \b')
+            // Backspace
+            xtermRef.current!.terminal.write('\b \b')
             setInput(input.slice(0, -1))
-          } else if (code < 32 || code === 127) { // Disable control Keys such as arrow keys
+          } else if (code < 32 || code === 127) {
+            // Control Key
             return;
-          } else { // Add general key press characters to the terminal
-            xtermRef.current.terminal.write(data);
+          } else {
+            // Default Input
+            xtermRef.current!.terminal.write(data);
             setInput(input + data)
           }
         }}
@@ -56,3 +61,13 @@ const CLI = () => {
 }
 
 export default CLI
+
+const getOutput = (command: string): string => {
+  console.log(command)
+  switch(command) {
+    case 'pwd':
+      return '/usr/local/'
+  }
+  
+  return ""
+}
