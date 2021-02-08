@@ -21,7 +21,7 @@ const CLI = () => {
   const [count, setCount] = useState(0)
   const xtermRef: React.RefObject<typeof XTerm> = React.createRef()
 
-  const prompt: string = "\x1b[1;32mkzk_maeda \x1b[1;35m$ \x1b[1;37m"
+  const prompt: string = "\x1b[1;32mkzk_maeda \x1b[1;35m$ \x1b[37m"
   useEffect(() => {
     // console.log(xtermRef)
   }, []);
@@ -93,10 +93,19 @@ const getOutput = (command: string): string => {
       return '/usr/local/'
     case 'whoami':
       return 'Kazuki Maeda'
+    case 'help':
+      return helpText
+    default:
+      return "Not authorized command\r\nType 'help' to see help"
   }
   
   return ""
 }
+
+const helpText = "kzk_maeda\r\n"
+  + "whoami  show author name\r\n"
+  + "pwd     show current directory\r\n"
+  + "date    show current datetime"
 
 const displayOutput = (ref: React.RefObject<typeof XTerm> ,output: string) => {
   ref.current?.terminal.write(output)
