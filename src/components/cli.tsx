@@ -93,6 +93,10 @@ const getOutput = (command: string): string => {
       return '/usr/local/'
     case 'whoami':
       return 'Kazuki Maeda'
+    case 'business':
+      return 'Progate, inc. Engineer Manager\r\nFreelance Engineer / Patent Consultant'
+    case 'works':
+      return workText
     case 'help':
       return helpText
     default:
@@ -103,9 +107,19 @@ const getOutput = (command: string): string => {
 }
 
 const helpText = "kzk_maeda\r\n"
-  + "whoami  show author name\r\n"
-  + "pwd     show current directory\r\n"
-  + "date    show current datetime"
+  + "whoami       :show author name\r\n"
+  + "pwd          :show current directory\r\n"
+  + "date         :show current datetime\r\n"
+  + "works        :show works history\r\n"
+  + "business     :show current business"
+
+const workText = "My works history:\r\n"
+  + "2013.04-2014.10   \x1b[1;34mPanasonic\r\n\x1b[37m"
+  + "                  (Patent Officer)\r\n"
+  + "2014.11-2020.08   \x1b[1;34mRecruit Technologies\r\n\x1b[37m"
+  + "                  (SRE/TeamLead/SucrumMaster/ProjectManager)\r\n"
+  + "2016.10-now       F\x1b[1;34mreelance\r\n\x1b[37m"
+  + "                  (Develop DataPipeline/API System/Consult about Patent)"
 
 const displayOutput = (ref: React.RefObject<typeof XTerm> ,output: string) => {
   ref.current?.terminal.write(output)
