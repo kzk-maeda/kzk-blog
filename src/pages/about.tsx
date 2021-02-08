@@ -2,13 +2,29 @@ import React, { Children } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import CLI from '../components/cli'
 import List from '@material-ui/core/List';
 import ListItem, { ListItemProps } from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+import Fade from '@material-ui/core/Fade';
 import Image from "gatsby-image";
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+    },
+    switchContainer: {
+      display: 'flex !important',
+      justifyContent: 'space-between !important',
+    },
+  })
+)
 
 export const Item: React.FC<{content: string}> = ({content}) => {
   return (
@@ -21,13 +37,28 @@ export const Item: React.FC<{content: string}> = ({content}) => {
 
 
 const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } ) => {
+    const classes = useStyles()  
     const siteTitle = data.site?.siteMetadata?.title || `Title`
     const avatar = data.avatar?.childImageSharp?.fixed
+
+    // switch which show cli or not
+    const [state, setState] = React.useState(false);
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      // console.log(state)
+      setState((prev) => !prev);
+    };
     
     return (
+      <>
         <Layout location={location} title={siteTitle}>
+            <div className="about-title"> 
+              <h1>About Me</h1>
+                <FormControlLabel
+                  control={<Switch color="primary" checked={state} onChange={handleChange} name="showCli" />}
+                  label="CLI Mode"
+                />
+            </div>
             <SEO title="About" />
-            <h1>About Me</h1>
             <Image
                 fixed={avatar!}
                 alt=""
@@ -62,6 +93,12 @@ const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } 
                 <Item content="Engineer Manager" />
             </List>
         </Layout>
+        <Fade in={state}>
+          <div>
+            <CLI />
+          </div>
+        </Fade>
+      </>
     )
 }
 
