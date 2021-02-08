@@ -18,6 +18,8 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    root: {
+    },
     switchContainer: {
       display: 'flex',
       justifyContent: 'space-between',
