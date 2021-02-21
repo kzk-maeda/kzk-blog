@@ -7,9 +7,7 @@ tags: ["読書"]
 
 # 対象書籍
 
-- HIGH OUTPUT MANAGEMENT
-- アンディ・グローブ著
-- https://www.amazon.co.jp/dp/B01MU055XH/ref=cm_sw_r_tw_dp_bCY.FbC2ZEQR5
+<div class="iframely-embed"><div class="iframely-responsive" style="padding-bottom: 52.5%; padding-top: 120px;"><a href="https://www.amazon.co.jp/dp/B01MU055XH/ref=cm_sw_r_tw_dp_bCY.FbC2ZEQR5" data-iframely-url="//cdn.iframe.ly/fYWkAQz"></a></div></div>
 
 # メモ
 ## 付箋を貼った箇所
