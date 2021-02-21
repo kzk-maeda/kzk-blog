@@ -6,7 +6,7 @@ tags: ['読書', 'organization']
 ---
 
 # 書籍
-[コーチングの基本](https://www.amazon.co.jp/gp/product/4534056591/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1)
+<div class="iframely-embed"><div class="iframely-responsive" style="padding-bottom: 52.5%; padding-top: 120px;"><a href="https://www.amazon.co.jp/gp/product/4534056591/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1" data-iframely-url="//cdn.iframe.ly/gjJzxoE"></a></div></div>
 
 # 本から得た知識のインデックス
 ## コーチングとは何か

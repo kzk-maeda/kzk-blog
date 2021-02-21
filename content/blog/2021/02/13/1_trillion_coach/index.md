@@ -6,7 +6,7 @@ tags: ["読書"]
 ---
 
 # 書籍
-[1兆ドルコーチ](https://www.amazon.co.jp/gp/product/4478107246/ref=ppx_yo_dt_b_asin_title_o07_s00?ie=UTF8&psc=1)
+<div class="iframely-embed"><div class="iframely-responsive" style="padding-bottom: 52.5%; padding-top: 120px;"><a href="https://www.amazon.co.jp/gp/product/4478107246/ref=ppx_yo_dt_b_asin_title_o07_s00?ie=UTF8&psc=1" data-iframely-url="//cdn.iframe.ly/2cv01Su"></a></div></div>
 
 # 概要
 シリコンバレーで伝説のコーチの呼び名が高い、ビル・キャンベルの話。

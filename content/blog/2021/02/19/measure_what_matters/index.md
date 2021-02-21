@@ -6,7 +6,7 @@ tags: ["読書"]
 ---
 
 # 書籍
-[Measure What Matters](https://www.amazon.co.jp/Measure-What-Matters-%E4%BC%9D%E8%AA%AC%E3%81%AE%E3%83%99%E3%83%B3%E3%83%81%E3%83%A3%E3%83%BC%E6%8A%95%E8%B3%87%E5%AE%B6%E3%81%8CGoogle%E3%81%AB%E6%95%99%E3%81%88%E3%81%9F%E6%88%90%E5%8A%9F%E6%89%8B%E6%B3%95-%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%83%BB%E3%83%9B%E3%83%AF%E3%83%83%E3%83%88%E3%83%BB%E3%83%9E%E3%82%BF%E3%83%BC%E3%82%BA/dp/4532322405/ref=tmm_hrd_swatch_0?_encoding=UTF8&qid=&sr=)
+<div class="iframely-embed"><div class="iframely-responsive" style="padding-bottom: 52.5%; padding-top: 120px;"><a href="https://www.amazon.co.jp/Measure-What-Matters-%25E4%25BC%259D%25E8%25AA%25AC%25E3%2581%25AE%25E3%2583%2599%25E3%2583%25B3%25E3%2583%2581%25E3%2583%25A3%25E3%2583%25BC%25E6%258A%2595%25E8%25B3%2587%25E5%25AE%25B6%25E3%2581%258CGoogle%25E3%2581%25AB%25E6%2595%2599%25E3%2581%2588%25E3%2581%259F%25E6%2588%2590%25E5%258A%259F%25E6%2589%258B%25E6%25B3%2595-%25E3%2583%25A1%25E3%2582%25B8%25E3%2583%25A3%25E3%2583%25BC%25E3%2583%25BB%25E3%2583%259B%25E3%2583%25AF%25E3%2583%2583%25E3%2583%2588%25E3%2583%25BB%25E3%2583%259E%25E3%2582%25BF%25E3%2583%25BC%25E3%2582%25BA/dp/4532322405/ref=tmm_hrd_swatch_0?_encoding=UTF8&amp;qid=&amp;sr=" data-iframely-url="//cdn.iframe.ly/WXJ4JFH"></a></div></div>
 
 # 概要
 アンディ・グローブの元でOKRの源流を学び、Googleでそれを進化させたベンチャー投資家であるジョン・ドーアが、Googleをはじめとするシリコンバレーのいくつもの企業で実施されてきたOKRの導入や管理のエピソードと共に、そのエッセンスを記載

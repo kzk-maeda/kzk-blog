@@ -6,6 +6,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import SNSShare from "../components/sns-share"
+import Iframely from "../components/iframely"
 
 import { makeStyles } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button"
@@ -32,6 +33,7 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
+      <Iframely />
       <article
         className="blog-post"
         itemScope
