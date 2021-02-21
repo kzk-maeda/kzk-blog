@@ -6,13 +6,15 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import SNSShare from "../components/sns-share"
+import Iframely from "../components/iframely"
 
 import { makeStyles } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button"
 
 const useStyles = makeStyles((theme) => ({
   postRoot: {
-    margin: theme.spacing(1),
+    margin: '10px 10px',
+    fontSize: '12px'
   },
 }));
 
@@ -31,6 +33,7 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
+      <Iframely />
       <article
         className="blog-post"
         itemScope
@@ -41,7 +44,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <p>{post.frontmatter.date}</p>
           {tags.map(tag => {
             return (
-              <Button className={classes.postRoot} variant="outlined" color="primary" href={`/tags/${kebabCase(tag)}/`}>
+              <Button className={classes.postRoot} variant="contained" color="primary" href={`/tags/${kebabCase(tag)}/`}>
                 {tag}
               </Button>
             )
