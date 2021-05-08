@@ -3254,11 +3254,6 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
-type SideBioOldQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SideBioOldQuery = { readonly avatar: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }>, readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly author: Maybe<Pick<Author, 'name' | 'summary'>>, readonly social: Maybe<Pick<Social, 'twitter' | 'github' | 'linkedin'>> }> }> };
-
 type BioQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3271,6 +3266,11 @@ type SeoQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
       Pick<SiteSiteMetadata, 'title' | 'description' | 'siteUrl'>
       & { readonly social: Maybe<Pick<Social, 'twitter'>> }
     )> }> };
+
+type SideBioOldQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SideBioOldQuery = { readonly avatar: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }>, readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly author: Maybe<Pick<Author, 'name' | 'summary'>>, readonly social: Maybe<Pick<Social, 'twitter' | 'github' | 'linkedin'>> }> }> };
 
 type SideBioQueryVariables = Exact<{ [key: string]: never; }>;
 
