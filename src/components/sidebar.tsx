@@ -21,6 +21,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
 
 import { graphql, PageProps, useStaticQuery, Link } from "gatsby";
 import Image from "gatsby-image";
@@ -115,6 +116,7 @@ export default function PersistentDrawerLeft() {
             twitter
             github
             linkedin
+            lapras
           }
         }
       }
@@ -217,6 +219,10 @@ export default function PersistentDrawerLeft() {
           <ListItem button key="LinkedIn" component="a" href={`https://www.linkedin.com/in/${social?.linkedin || ``}`}>
             <ListItemIcon><LinkedInIcon /></ListItemIcon>
             <ListItemText primary="LinkedIn" />
+          </ListItem>
+          <ListItem button key="Lapras" component="a" href={`https://scout.lapras.com/person/${social?.lapras || ``}`}>
+            <ListItemIcon><AccountBoxIcon /></ListItemIcon>
+            <ListItemText primary="Lapras" />
           </ListItem>
         </List>
       </Drawer>
