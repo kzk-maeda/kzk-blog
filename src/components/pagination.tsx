@@ -18,12 +18,18 @@ type PageContext = {
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         prevButton: {
-            display: 'block',
+            display: 'inline-block',
             margin: '0 auto 0 10px',
+            textAlign: 'right',
         },
         nextButton: {
-            display: 'block',
+            display: 'inline-block',
             margin: '0 10px 0 auto',
+            textAlign: 'right',
+        },
+        parent: {
+            display: 'flex',
+            justifyContent: 'space-between',
         }
     }),
 )
@@ -36,7 +42,8 @@ const Pagination: React.FC<Props> = ({ pageContext }) => {
 
     if (!previousPagePath && nextPagePath) {
         return (
-            <div>
+            <div className={classes.parent}>
+                <div className={classes.prevButton} />
                 <Link to={nextPagePath}>
                     <IconButton className={classes.nextButton} color="default">
                         <ArrowForwardIosIcon />
@@ -46,17 +53,18 @@ const Pagination: React.FC<Props> = ({ pageContext }) => {
         )
     } else if (!nextPagePath && previousPagePath) {
         return (
-            <>
+            <div className={classes.parent}>
                 <Link to={previousPagePath}>
                     <IconButton className={classes.prevButton} color="default">
                         <ArrowBackIosIcon />
                     </IconButton>
                 </Link>
-            </>
+                <div className={classes.nextButton} />
+            </div>
         )
     } else {
         return (
-            <>
+            <div className={classes.parent}>
                 <Link to={previousPagePath || "/"}>
                     <IconButton className={classes.prevButton} color="default">
                         <ArrowBackIosIcon />
@@ -67,7 +75,7 @@ const Pagination: React.FC<Props> = ({ pageContext }) => {
                         <ArrowForwardIosIcon />
                     </IconButton>
                 </Link>
-            </>
+            </div>
         )
     }
 
