@@ -11,6 +11,7 @@ module.exports = {
       twitter: `kzk_maeda`,
       github: `kzk-maeda`,
       linkedin: `kzk-maeda`,
+      lapras: `149753`,
     },
   },
   plugins: [
