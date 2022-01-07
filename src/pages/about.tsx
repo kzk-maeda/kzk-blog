@@ -13,6 +13,7 @@ import Switch from '@material-ui/core/Switch';
 import Fade from '@material-ui/core/Fade';
 import Image from "gatsby-image";
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import Joyride, {Step} from 'react-joyride';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -47,13 +48,27 @@ const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } 
       // console.log(state)
       setState((prev) => !prev);
     };
+
+    // tour state
+    const tourState = {
+      steps: [
+        {
+          content: "Here's CLI Mode. \n If you want to show my profile via CLI, please click HERE!",
+          placement: 'bottom',
+          target: '.show__cli',
+          spotlightClicks: true,
+        },
+      ] as Step[],
+    }
     
     return (
       <>
         <Layout location={location} title={siteTitle}>
+          <Joyride steps={tourState.steps} />
             <div className="about-title"> 
               <h1>About Me</h1>
                 <FormControlLabel
+                  className="show__cli"
                   control={<Switch color="primary" checked={state} onChange={handleChange} name="showCli" />}
                   label="CLI Mode"
                 />
