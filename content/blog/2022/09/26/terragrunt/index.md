@@ -1,5 +1,5 @@
 ---
-title: 
+title: TerragruntでTerraformコードを「適度に」DRYにする
 date: "2022-09-26T17:17:00.000Z"
 description: "terrugruntを用いたworkspace脱却検証"
 tags: ["terraform", "IaC", "AWS"]
