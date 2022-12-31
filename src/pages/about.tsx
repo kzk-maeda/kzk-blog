@@ -70,7 +70,7 @@ const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } 
             <h3>Profile</h3>
             <List>
                 <Item content="kzk_maeda" />
-                <Item content="Progate, inc. Engineer Manager" />
+                <Item content="atama plus, inc. SRE" />
             </List>
             <h3>Works</h3>
             <h5>Panasonic (2013.4 ~ 2014.11)</h5>
@@ -88,9 +88,13 @@ const About: React.FC<PageProps<GatsbyTypes.AboutQuery>> = ( { data, location } 
                 <Item content="Patent Conslutant" />
                 <Item content="Data Platform Engineer" />
             </List>
-            <h5>Progate (2020.9 ~ )</h5>
+            <h5>Progate (2020.9 ~ 2022.8)</h5>
             <List>
                 <Item content="Engineer Manager" />
+            </List>
+            <h5>atama plus (2022.8 ~ )</h5>
+            <List>
+                <Item content="SRE" />
             </List>
         </Layout>
         <Fade in={state}>

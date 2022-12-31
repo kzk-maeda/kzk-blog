@@ -101,7 +101,7 @@ const getOutput = (command: string): string => {
     case /whoami/.test(command):
       return 'Kazuki Maeda(kzk_maeda)'
     case /business/.test(command):
-      return 'Progate, inc. Engineer Manager\r\nFreelance Engineer / Patent Consultant'
+      return 'atama plus, inc. SRE\r\nFreelance Engineer / Patent Consultant'
     case /works/.test(command):
       return workText
     case /help/.test(command):

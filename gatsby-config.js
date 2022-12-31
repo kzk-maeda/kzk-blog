@@ -3,7 +3,7 @@ module.exports = {
     title: `KZK_MAEDA's Blog`,
     author: {
       name: `kzk_maeda`,
-      summary: `Engineer Manager@Progate.Inc. AWS/CSM/DevRel/Python. `,
+      summary: `SRE@atama plus Inc. AWS/CSM/DevRel/Terraform/Python. `,
     },
     description: `kzk self opinions.`,
     siteUrl: `https://blog.kzk-maeda.work/`,
